@@ -4,17 +4,17 @@ const NavBar = () => {
   return (
     <nav className="nav">
       <a href="/" className="site-title">
-        Site Name
+        Argá
       </a>
       <ul>
         <li>
-          <a href="/celulares">Celulares</a>
+          <a href="/shop">Shop</a>
         </li>
         <li>
-          <a href="/tablets">Tablets</a>
+          <a href="/aboutUs">About Us</a>
         </li>
         <li>
-          <a href="/notebooks">Notebooks</a>
+          <a href="/journal">Journal</a>
         </li>
       </ul>
       {/* <h3>Ecommerce</h3>
