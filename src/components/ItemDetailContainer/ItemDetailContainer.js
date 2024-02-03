@@ -1,3 +1,4 @@
+/* ItemDetailContainer.js */
 import "./ItemDetailContainer.css";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -9,11 +10,21 @@ const ItemDetailContainer = () => {
 
   const { itemId } = useParams();
 
+  // useEffect(() => {
+  //   getProductById(itemId)
+  //     .then((response) => {
+  //       setProduct(response);
+  //       console.log(response);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }, [itemId]);
+
   useEffect(() => {
     getProductById(itemId)
       .then((response) => {
-        setProduct(response);
-        console.log(response);
+        setProduct(response[0]);
       })
       .catch((error) => {
         console.error(error);
@@ -25,7 +36,7 @@ const ItemDetailContainer = () => {
       {product && (
         <ItemDetail
           {...product}
-          img={product.img} // Asegúrate de tener el campo 'img' en tu fuente de datos
+          img={product.img}
           additionalImages={product.additionalImages}
         />
       )}

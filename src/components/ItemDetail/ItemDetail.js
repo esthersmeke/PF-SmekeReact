@@ -12,12 +12,6 @@ const ItemDetail = ({
   stock,
   additionalImages,
 }) => {
-  const [showCounter, setShowCounter] = useState(false);
-
-  const handleShowCounter = () => {
-    setShowCounter(true);
-  };
-
   return (
     <article className="CardItem">
       <header className="Header">
@@ -25,12 +19,7 @@ const ItemDetail = ({
       </header>
       <div className="ImageContainer">
         {/* Muestra la imagen principal */}
-        <img
-          src={img}
-          alt={name}
-          className="MainImage"
-          onClick={handleShowCounter}
-        />
+        <img src={img} alt={name} className="MainImage" />
 
         {/* Muestra las imágenes adicionales si existen */}
         {additionalImages && additionalImages.length > 0 && (
@@ -47,28 +36,19 @@ const ItemDetail = ({
         )}
       </div>
       <section>
+        <p>ID: {id}</p>
         <p className="Info">Categoría: {category}</p>
         <p className="Info">Descripción: {description}</p>
         <p className="Info">Precio: ${price}</p>
       </section>
-      <footer className="ItemFooter">
-        {/* Muestra el contador solo si showCounter es true */}
+
+      <div className="CounterContainer">
         <ItemCount
           initial={1}
-          stock={10}
-          onAdd={(quantity) => console.log("Cantidad agregada ", quantity)}
+          stock={stock}
+          onAdd={(quantity) => console.log("Cantidad agregada: ", quantity)}
         />
-
-        {showCounter && (
-          <div className="CounterContainer">
-            <ItemCount
-              initial={1}
-              stock={stock}
-              onAdd={(quantity) => console.log("Cantidad agregada ", quantity)}
-            />
-          </div>
-        )}
-      </footer>
+      </div>
     </article>
   );
 };
