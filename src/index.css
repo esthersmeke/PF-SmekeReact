@@ -50,3 +50,8 @@ code {
 .nav li:hover {
   background-color: #777;
 }
+
+.img.ItemImg {
+  display: block;
+  width: 20%;
+}

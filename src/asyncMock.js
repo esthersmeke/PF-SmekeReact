@@ -1,43 +1,58 @@
 const products = [
   {
     id: "1",
-    name: "iPhone 12",
-    price: 1000,
-    category: "celular",
-    img: "https://pngimg.com/uploads/iphone_12/iphone_12_PNG3.png",
+    name: "Corso Crossover Legging",
+    price: 88,
+    category: "clothing",
+    img: "https://cdn.shopify.com/s/files/1/0250/5696/8738/products/BRS19132-BLACK_ecomm_0002_450x.jpg?v=1611241772",
     stock: 25,
-    description: "Descripción de iPhone 12",
+    description: "Color Black",
+    additionalImages: [
+      "https://www.bandier.com/cdn/shop/products/BRS19132-BLACK_ecomm_0026_1536x.jpg?v=1611241772",
+      "url2.jpg",
+      // ... más imágenes adicionales ...
+    ],
   },
   {
     id: "2",
-    name: "Samsung S21",
-    price: 800,
-    category: "celular",
-    img: "https://www.corning.com/microsites/csm/gorillaglass/Samsung/CGG_Samsun_galaxys21_phantom.jpg",
+    name: "Corso Crossover Bra",
+    price: 68,
+    category: "clothing",
+    img: "https://cdn.shopify.com/s/files/1/0250/5696/8738/products/BRS19130-BLACK_ecomm_0029_450x.jpg?v=1611242071",
     stock: 25,
-    description: "Descripción de Samsung S21",
+    description: "Color Black",
   },
   {
     id: "3",
-    name: "iPad 8va generación",
-    price: 1200,
-    category: "tablet",
-    img: "https://www.theioutlet.com/wp-content/uploads/2023/01/iPad-2019-Silver.png?resize=600,720",
+    name: "Women's Cloudmonster",
+    price: 170,
+    category: "shoes",
+    img: "https://cdn.shopify.com/s/files/1/0250/5696/8738/files/SmallPNG-61.98285-cloudmonster-ss23-undyed_white_white-w-g1_450x.jpg?v=1701874240",
     stock: 25,
-    description: "Descripción de iPad 8va generación",
+    description: "Undyed-White/White",
+  },
+  {
+    id: "4",
+    name: "V-Neck Tempo Crop Bra",
+    price: 48.8,
+    category: "sale",
+    img: "https://cdn.shopify.com/s/files/1/0250/5696/8738/files/BND10194-BAJABLUE-BANDIER-1_2_450x.jpg?v=1690912023",
+    stock: 10,
+    description: "Color Baja Blue",
   },
 ];
 
-export const getProductById = () => {
+export const getProductById = (productId) => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(products);
+      const product = products.find((item) => item.id === productId);
+      resolve(product ? [product] : []); // Devolver un array con el producto o un array vacío si no se encuentra
     }, 500);
   });
 };
+
 export const getProductsByCategory = (category) => {
   return new Promise((resolve) => {
-    // Simulate fetching products by category
     const filteredProducts = products.filter(
       (product) => product.category === category
     );

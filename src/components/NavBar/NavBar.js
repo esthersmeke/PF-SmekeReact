@@ -6,29 +6,41 @@ const NavBar = () => {
     <nav className="nav">
       <Link to="/" className="site-title">
         Argá
-        {/* <a href="/" className="site-title">
-          Argá
-        </a> */}
       </Link>
       <div className="Categories">
-        <NavLink
-          to={`/category/celular`}
-          className={({ isActive }) => (isActive ? "ActiveOption" : "Option")}
-        >
-          Celulares
-        </NavLink>
+        <ul>
+          <li>
+            <NavLink
+              to={`/category/clothing`}
+              className={({ isActive }) =>
+                isActive ? "ActiveOption" : "Option"
+              }
+            >
+              CLOTHING
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to={`/category/shoes`}
+              className={({ isActive }) =>
+                isActive ? "ActiveOption" : "Option"
+              }
+            >
+              SHOES
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to={`/category/sale`}
+              className={({ isActive }) =>
+                isActive ? "ActiveOption" : "Option"
+              }
+            >
+              SALE
+            </NavLink>
+          </li>
+        </ul>
       </div>
-      <ul>
-        <li>
-          <a href="/shop">Shop</a>
-        </li>
-        <li>
-          <a href="/aboutUs">About Us</a>
-        </li>
-        <li>
-          <a href="/journal">Journal</a>
-        </li>
-      </ul>
 
       <CartWidget className="bag-icon" />
     </nav>
