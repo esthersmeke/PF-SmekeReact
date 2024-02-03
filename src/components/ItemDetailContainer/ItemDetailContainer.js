@@ -32,7 +32,7 @@ const ItemDetailContainer = () => {
   }, [itemId]);
 
   return (
-    <div className="ItemDetailContainer">
+    <div className="container ItemDetailContainer">
       {product && (
         <ItemDetail
           {...product}
