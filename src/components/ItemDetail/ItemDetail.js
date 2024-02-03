@@ -13,7 +13,7 @@ const ItemDetail = ({
   additionalImages,
 }) => {
   return (
-    <div className="CardItem">
+    <div className="single-product-view CardItem">
       <div className="grid">
         <div className="col">
           <div className="ImageContainer">

@@ -39,7 +39,7 @@
     width: 50%;
   }
 
-  .CardItem {
+  .single-product-view {
     height: calc(100vh - 3.5rem);
   }
 

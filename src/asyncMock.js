@@ -4,7 +4,7 @@ const products = [
     name: "Corso Crossover Legging",
     price: 88,
     category: "clothing",
-    img: "https://cdn.shopify.com/s/files/1/0250/5696/8738/products/BRS19132-BLACK_ecomm_0002_800x.jpg?v=1611241772",
+    img: "https://cdn.shopify.com/s/files/1/0250/5696/8738/products/BRS19132-BLACK_ecomm_0002_450x.jpg?v=1611241772",
     stock: 25,
     description: "Color Black",
     additionalImages: [
@@ -18,7 +18,7 @@ const products = [
     name: "Corso Crossover Bra",
     price: 68,
     category: "clothing",
-    img: "https://cdn.shopify.com/s/files/1/0250/5696/8738/products/BRS19130-BLACK_ecomm_0029_450x600.jpg?v=1611242071",
+    img: "https://cdn.shopify.com/s/files/1/0250/5696/8738/products/BRS19130-BLACK_ecomm_0029_450x.jpg?v=1611242071",
     stock: 25,
     description: "Color Black",
   },
@@ -41,7 +41,6 @@ const products = [
     description: "Color Baja Blue",
   },
 ];
-
 export const getProductById = (productId) => {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -58,6 +57,14 @@ export const getProductsByCategory = (category) => {
     );
     setTimeout(() => {
       resolve(filteredProducts);
+    }, 500);
+  });
+};
+
+export const getProducts = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(products);
     }, 500);
   });
 };
