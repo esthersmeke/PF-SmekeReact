@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./ItemDetail.css";
 import ItemCount from "../ItemCount/ItemCount";
+import { Link } from "react-router-dom";
 
 const ItemDetail = ({
   id,
@@ -12,6 +13,12 @@ const ItemDetail = ({
   stock,
   additionalImages,
 }) => {
+  const [quantityAdded, setQuantityAdded] = useState(0);
+
+  const handleOnAdd = (quantity) => {
+    setQuantityAdded(quantity);
+  };
+
   return (
     <div className="single-product-view CardItem">
       <div className="grid">
@@ -49,13 +56,13 @@ const ItemDetail = ({
             </section>
 
             <div className="CounterContainer">
-              <ItemCount
-                initial={1}
-                stock={stock}
-                onAdd={(quantity) =>
-                  console.log("Cantidad agregada: ", quantity)
-                }
-              />
+              {quantityAdded > 0 ? (
+                <Link to="/cart" className="Option Button">
+                  Terminar Compra
+                </Link>
+              ) : (
+                <ItemCount initial={1} stock={stock} onAdd={handleOnAdd} />
+              )}
             </div>
           </div>
         </div>
