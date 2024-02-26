@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Item.css";
 import { Link } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
 
 const Item = ({ id, name, img, price, stock }) => {
+  const { addItem } = useContext(CartContext);
+  // Lógica para agregar el producto al carrito
   const handleAddToCart = () => {
-    // Lógica para agregar el producto al carrito
+    addItem({ id, name, img, price, stock }, 1); // Assuming you want to add one item each time the button is clicked
     console.log(`Producto agregado al carrito: ${name}`);
   };
 
@@ -17,16 +20,16 @@ const Item = ({ id, name, img, price, stock }) => {
         <img src={img} alt={name} className="ItemImg" />
       </picture>
       <section>
-        <p className="Info">Precio: ${price}</p>
-        <p className="Info">Stock disponible: {stock}</p>
+        <p className="Info">Price: ${price}</p>
+        <p className="Info">Stock: {stock}</p>
         {/* Agrega el botón "Agregar al carrito" aquí */}
         <button className="AddToCartButton" onClick={handleAddToCart}>
-          Agregar al carrito
+          Add to cart
         </button>
       </section>
       <footer className="ItemFooter">
         <Link to={`/item/${id}`} className="Option">
-          Ver detalle
+          Details
         </Link>
       </footer>
     </article>

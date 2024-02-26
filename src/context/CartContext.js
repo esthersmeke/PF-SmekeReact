@@ -13,7 +13,7 @@ export const CartProvider = ({ children }) => {
     if (!isInCart(item.id)) {
       setCart((prev) => [...prev, { ...item, quantity }]);
     } else {
-      console.error("El producto ya fue agregado");
+      console.error("The product has already been added");
     }
   };
 

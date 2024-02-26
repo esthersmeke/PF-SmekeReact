@@ -62,15 +62,15 @@ const ItemDetail = ({
             </header>
 
             <section>
-              <p className="Info">Categoría: {category}</p>
-              <p className="Info">Descripción: {description}</p>
-              <p className="Info">Precio: ${price}</p>
+              <p className="Info">Category: {category}</p>
+              <p className="Info">Description: {description}</p>
+              <p className="Info">Price: ${price}</p>
             </section>
 
             <div className="CounterContainer">
               {quantityAdded > 0 ? (
                 <Link to="/cart" className="Option Button">
-                  Terminar Compra
+                  Go to Cart
                 </Link>
               ) : (
                 <ItemCount initial={1} stock={stock} onAdd={handleOnAdd} />
