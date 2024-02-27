@@ -1,16 +1,32 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const CartContext = createContext({
   cart: [],
   totalQuantity: 0, // Agregar totalQuantity al contexto
   clearCart: () => {}, // Agregar clearCart al contexto
+  totalAmount: 0,
+  addItem: () => {},
+  removeItem: () => {},
 });
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [totalQuantity, setTotalQuantity] = useState(0); // Estado para mantener el totalQuantity
+  const [totalAmount, setTotalAmount] = useState(0);
 
-  console.log(cart);
+  useEffect(() => {
+    // Calcula el total de artículos y el monto total cada vez que cambia el carrito
+    const newTotalQuantity = cart.reduce(
+      (total, item) => total + item.quantity,
+      0
+    );
+    const newTotalAmount = cart.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+    setTotalQuantity(newTotalQuantity);
+    setTotalAmount(newTotalAmount);
+  }, [cart]);
 
   const addItem = (item, quantity) => {
     if (!isInCart(item.id)) {
@@ -40,7 +56,14 @@ export const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cart, totalQuantity, addItem, removeItem, clearCart }}
+      value={{
+        cart,
+        totalQuantity,
+        totalAmount,
+        addItem,
+        removeItem,
+        clearCart,
+      }}
     >
       {children}
     </CartContext.Provider>
