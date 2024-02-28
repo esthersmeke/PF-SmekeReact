@@ -7,9 +7,10 @@ const Item = (props) => {
   const { id, title, image, price, stock, itemId } = props.product;
 
   const { addItem } = useContext(CartContext);
+
   // Lógica para agregar el producto al carrito
   const handleAddToCart = () => {
-    addItem({ id, title, image, price, stock }, 1); // Assuming you want to add one item each time the button is clicked
+    addItem({ id, title, image, price, stock }, 1);
     console.log(`Producto agregado al carrito: ${title}`);
   };
 
