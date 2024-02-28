@@ -41,6 +41,7 @@ export const CartProvider = ({ children }) => {
 
   const removeItem = (itemId) => {
     const cartUpdated = cart.filter((prod) => prod.id !== itemId);
+    setTotalQuantity(totalQuantity - 1);
     setCart(cartUpdated);
     console.log("Cart Qty: " + totalQuantity);
   };

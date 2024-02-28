@@ -3,8 +3,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
+import Home from "./components/Home/Home";
 import Cart from "./components/Cart/Cart";
-import Checkout from "./components/Checkout/Checkout"; // Importa el componente Checkout
+import Checkout from "./components/Checkout/Checkout";
 
 import { CartProvider } from "./context/CartContext";
 
@@ -16,9 +17,11 @@ function App() {
           <NavBar />
           <Routes>
             <Route
+              exact
               path="/"
-              element={<ItemListContainer greeting="Welcome to Argá 🫶" />}
+              element={<Home greeting="Welcome to Argá 🫶" />}
             />
+            <Route exact path="/products" element={<ItemListContainer />} />
             <Route
               path="/category/:categoryId"
               element={<ItemListContainer />}

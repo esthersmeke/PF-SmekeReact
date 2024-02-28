@@ -11,32 +11,23 @@ const NavBar = () => {
         <ul>
           <li>
             <NavLink
-              to={`/category/clothing`}
+              to={`/`}
               className={({ isActive }) =>
                 isActive ? "ActiveOption" : "Option"
               }
             >
-              CLOTHING
+              HOME
             </NavLink>
           </li>
+
           <li>
             <NavLink
-              to={`/category/shoes`}
+              to={`/products`}
               className={({ isActive }) =>
                 isActive ? "ActiveOption" : "Option"
               }
             >
-              SHOES
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={`/category/sale`}
-              className={({ isActive }) =>
-                isActive ? "ActiveOption" : "Option"
-              }
-            >
-              SALE
+              PRODUCTS
             </NavLink>
           </li>
         </ul>
