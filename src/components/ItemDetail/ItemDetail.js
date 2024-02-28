@@ -39,8 +39,6 @@ const ItemDetail = ({
       collection(db, "items"),
       where("slug", "==", slugProduct)
     );
-
-    getDocs(filter).then(snapshot);
   });
 
   return (
