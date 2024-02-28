@@ -1,4 +1,4 @@
-const products = [
+/* const products = [
   {
     id: "1",
     name: "Corso Crossover Legging",
@@ -67,4 +67,4 @@ export const getProducts = () => {
       resolve(products);
     }, 500);
   });
-};
+};*/
