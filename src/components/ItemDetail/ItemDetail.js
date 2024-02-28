@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./ItemDetail.css";
 import ItemCount from "../ItemCount/ItemCount";
-import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { CartContext } from "../../context/CartContext";
 
@@ -15,7 +15,6 @@ const ItemDetail = ({
   stock,
   additionalImages,
 }) => {
-  const { slugItem } = useParams();
   const [quantityAdded, setQuantityAdded] = useState(0);
 
   const { addItem } = useContext(CartContext);
@@ -31,15 +30,6 @@ const ItemDetail = ({
 
     addItem(item, quantity);
   };
-
-  useEffect(() => {
-    const db = getFireStore();
-
-    const filter = query(
-      collection(db, "items"),
-      where("slug", "==", slugProduct)
-    );
-  });
 
   return (
     <div className="single-product-view CardItem">
