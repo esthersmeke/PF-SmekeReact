@@ -26,8 +26,8 @@ const ItemListContainer = () => {
         : query(collection(db, "items"), where("category", "==", cat));
 
     getDocs(q).then((snapshot) => {
-      const dataExtraida = snapshot.docs.map((datos) => datos.data());
-      setProducts(dataExtraida);
+      const extractedData = snapshot.docs.map((datos) => datos.data());
+      setProducts(extractedData);
     });
   }, [cat]);
 
