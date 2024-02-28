@@ -1,50 +1,65 @@
 import { useState, useEffect } from "react";
-// import { getProducts, getProductsByCategory } from "../../asyncMock";
-import ItemList from "../ItemList/ItemList";
-
-import { useParams } from "react-router-dom";
-
 import {
   getFirestore,
   getDocs,
   collection,
   query,
   where,
-  getDoc,
-  limit,
 } from "firebase/firestore";
-import { db } from "../../index";
+import ItemList from "../ItemList/ItemList";
 
-const ItemListContainer = ({ greeting }) => {
+// import { db } from "../../index";
+
+const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true); // Define el estado de carga
+  const [cat, setCat] = useState("todos");
 
-  const { categoryId } = useParams();
+  // const { categoryId } = useParams();
 
   useEffect(() => {
-    setLoading(true);
+    // Call Firestore
+    const db = getFirestore();
 
-    const collectionRef = categoryId
-      ? query(collection(db, "products"), where("category", "==", categoryId))
-      : collection(db, "products");
+    var q =
+      cat == "todos"
+        ? query(collection(db, "items"))
+        : query(collection(db, "items"), where("category", "==", cat));
 
-    getDocs(collectionRef)
-      .then((response) => {
-        const productsAdapted = response.docs.map((doc) => {
-          const data = doc.data();
-          return { id: doc.id, ...data };
-        });
-        setProducts(productsAdapted);
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
+    getDocs(q).then((snapshot) => {
+      const dataExtraida = snapshot.docs.map((datos) => datos.data());
+      setProducts(dataExtraida);
+    });
+  }, [cat]);
 
-  /* useEffect(() => {
+  const handleSelect = (event) => {
+    setCat(event.target.value);
+  };
+
+  return (
+    <div>
+      <div>
+        <select
+          className="cat-filter"
+          name="categories"
+          id="categorySelect"
+          value={cat}
+          onChange={handleSelect}
+        >
+          <option value="todos">Todos</option>
+          <option value="Clothing">Clothing</option>
+          <option value="Shoes">Shoes</option>
+          <option value="Sale">Sale</option>
+        </select>
+      </div>
+
+      <ItemList products={products} />
+    </div>
+  );
+};
+
+export default ItemListContainer;
+
+/* useEffect(() => {
     const asyncFunc = categoryId ? getProductsByCategory : getProducts;
 
     asyncFunc(categoryId)
@@ -56,12 +71,12 @@ const ItemListContainer = ({ greeting }) => {
       });
   }, [categoryId]); */
 
-  return (
-    <div>
-      <h1>{greeting}</h1>
-      {loading ? <p>Loading...</p> : <ItemList products={products} />}
-    </div>
-  );
-};
+//   return (
+//     <div>
+//       <h1>{greeting}</h1>
+//       {loading ? <p>Loading...</p> : <ItemList products={products} />}
+//     </div>
+//   );
+// };
 
-export default ItemListContainer;
+// export default ItemListContainer;
