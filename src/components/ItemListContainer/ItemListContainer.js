@@ -12,7 +12,7 @@ import ItemList from "../ItemList/ItemList";
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
-  const [cat, setCat] = useState("todos");
+  const [cat, setCat] = useState("all");
 
   // const { categoryId } = useParams();
 
@@ -21,7 +21,7 @@ const ItemListContainer = () => {
     const db = getFirestore();
 
     var q =
-      cat == "todos"
+      cat == "all"
         ? query(collection(db, "items"))
         : query(collection(db, "items"), where("category", "==", cat));
 
@@ -45,7 +45,7 @@ const ItemListContainer = () => {
           value={cat}
           onChange={handleSelect}
         >
-          <option value="todos">Todos</option>
+          <option value="all">All</option>
           <option value="Clothing">Clothing</option>
           <option value="Shoes">Shoes</option>
           <option value="Sale">Sale</option>
