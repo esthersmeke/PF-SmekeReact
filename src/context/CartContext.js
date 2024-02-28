@@ -29,14 +29,9 @@ export const CartProvider = ({ children }) => {
   }, [cart]);
 
   const addItem = (item, quantity) => {
-    if (!isInCart(item.id)) {
-      setCart((prev) => [...prev, { ...item, quantity }]);
-      setTotalQuantity((prevTotal) => prevTotal + quantity); // Actualiza totalQuantity
-      console.log("Cart Qty: " + totalQuantity);
-    } else {
-      alert("The product has already been added");
-      // Màs bien lo que tendrìa que hacer es si ya hay, sumar la cantidad a los que ya estàn en el carrito
-    }
+    setCart((prev) => [...prev, { ...item, quantity }]);
+    setTotalQuantity((prevTotal) => prevTotal + quantity); // Actualiza totalQuantity
+    console.log("Cart Qty: " + totalQuantity);
   };
 
   const removeItem = (itemId) => {
